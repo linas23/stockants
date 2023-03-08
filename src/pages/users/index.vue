@@ -5,7 +5,7 @@
       </v-text-field>
     </div>
     <div class="row g-5">
-      <div v-for="i in 14" :key="i" class="col-3">
+      <div v-for="i in 12" :key="i" class="col-3">
         <v-hover>
           <template v-slot:default="{ isHovering, props }">
             <v-card

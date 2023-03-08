@@ -36,7 +36,7 @@
 <script>
 export default {
   data: () => ({
-    drawer: true,
+    drawer: false,
     open: ["overview"],
     options: [
       ["Accounts", "mdi-plus-outline"],

@@ -59,6 +59,12 @@
               <div class="mx-5">Sectors</div>
               <div>Stocks Covered <sup class="text-orange">34</sup></div>
             </div>
+            <div class="row">
+              <div class="col-6"></div>
+              <div class="col-6">
+                <DonutChart />
+              </div>
+            </div>
           </v-card-text>
         </v-card>
       </div>
@@ -101,6 +107,10 @@
           <v-card>
             <v-card-text>
               <div class="text-h5">Expert Vs Sensex</div>
+
+              <div class="mt-4">
+                <ExpertVsSensex></ExpertVsSensex>
+              </div>
             </v-card-text>
           </v-card>
         </div>
@@ -113,18 +123,30 @@
           <div class="container">
             <div class="border rounded-lg py-4">
               <div class="row">
-                <div class="col-3 d-flex flex-column align-center">
+                <div class="col-4 d-flex flex-column align-center">
                   <div>If you would have invested</div>
                   <div class="text-h3">1L</div>
                   <div>
                     in <span class="text-primary">Profit Tiger</span> in
                   </div>
+                  <div class="d-flex justify-space-between">
+                    <div
+                      v-for="(item, i) in ['1M', '3M', '6M', '1Y', 'MAX']"
+                      :key="i"
+                      :class="[
+                        'px-3 py-1 rounded-lg',
+                        { 'bg-primary': i === 0 },
+                      ]"
+                    >
+                      {{ item }}
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 d-flex align-center">
+                <div class="col-4 d-flex align-center">
                   <v-divider></v-divider>
                   <v-icon>mdi-chevron-right</v-icon>
                 </div>
-                <div class="col-3 d-flex flex-column align-center">
+                <div class="col-4 d-flex flex-column align-center">
                   <div>Your current value would be</div>
                   <div class="text-h3">3.12 Cr</div>
                 </div>
@@ -134,13 +156,86 @@
         </v-card-text>
       </v-card>
     </div>
+
+    <div class="my-4">
+      <div class="row">
+        <div class="col-12 col-xl-6">
+          <v-card>
+            <v-card-text>
+              <div class="d-flex justify-space-between align-center">
+                <div class="text-h6 font-weight-bold">
+                  Recommendations (Equity)
+                </div>
+                <div class="d-flex">
+                  <div>1M / 3M/ 6M</div>
+                  <div>
+                    <v-icon>mdi-edit</v-icon>
+                    Edit
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div
+                  v-for="i in 6"
+                  :key="i"
+                  :class="[
+                    'col-12 border-bottom py-3',
+                    { 'border-end': i % 2 !== 0 },
+                  ]"
+                >
+                  <RecommendationCard />
+                </div>
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+        <div class="col-12 col-xl-6">
+          <v-card>
+            <v-card-text>
+              <div class="d-flex justify-space-between align-center">
+                <div class="text-h6 font-weight-bold">
+                  Recommendations (Options)
+                </div>
+                <div class="d-flex">
+                  <div>1M / 3M/ 6M</div>
+                  <div>
+                    <v-icon>mdi-edit</v-icon>
+                    Edit
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div
+                  v-for="i in 6"
+                  :key="i"
+                  :class="[
+                    ' border-bottom py-3',
+                    { 'border-end': i % 2 !== 0 },
+                  ]"
+                >
+                  <RecommendationCard />
+                </div>
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { onMounted, ref } from "vue";
 import { getDashboardData } from "../../api/user";
+import DonutChart from "../../components/charts/DonutChart.vue";
+import ExpertVsSensex from "../../components/charts/ExpertVsSensexLineChart.vue";
+import RecommendationCard from "../../components/RecommendationCard.vue";
 export default {
+  components: {
+    ExpertVsSensex,
+    DonutChart,
+    RecommendationCard,
+  },
   setup() {
     onMounted(async () => {
       const res = await getDashboardData();
