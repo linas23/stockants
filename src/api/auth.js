@@ -8,16 +8,4 @@ export const authLogin = (data) => {
   });
 };
 
-export const authLogout = () => {
-  return axiosInstance({
-    url: "/auth/logout",
-    method: "POST",
-  });
-};
 
-export const getAuthUserData = () => {
-  return axiosInstance({
-    url: "/auth/user",
-    method: "GET",
-  });
-};
