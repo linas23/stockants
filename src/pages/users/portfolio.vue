@@ -1,10 +1,144 @@
 <template>
-  <div class="container">
-    <h1>portfolio</h1>
+  <div class="container my-4">
+    <div class="w-50 ml-4">
+      <v-text-field
+        variant="solo"
+        prepend-inner-icon="mdi-magnify"
+        label="Search Keywords"
+      >
+      </v-text-field>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <v-card class="rounded-lg" elevation="6">
+          <v-card-text>
+            <div class="text-center">
+              <v-avatar>
+                <v-img
+                  src="https://cdn.vuetifyjs.com/images/john.jpg"
+                  alt="John"
+                ></v-img>
+              </v-avatar>
+              <div class="text-h6">Vikas Bhagaria</div>
+              <div class="text-grey text-subtitle-2">Research Analyst</div>
+
+              <div class="mt-4">
+                <div class="text-h6">2.27%</div>
+                <div class="text-grey text-subtitle-2">Annualised ROI</div>
+              </div>
+              <div class="my-2">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="text-h6">N/A</div>
+                    <div class="text-grey text-subtitle-2">Accuracy</div>
+                  </div>
+                  <div class="col-6">
+                    <div class="text-h6">N/A</div>
+                    <div class="text-grey text-subtitle-2">Success Rate</div>
+                  </div>
+                  <div class="col-6">
+                    <div class="text-h6">2</div>
+                    <div class="text-grey text-subtitle-2">Live Reco</div>
+                  </div>
+                  <div class="col-6">
+                    <div class="text-h6">146</div>
+                    <div class="text-grey text-subtitle-2">Total Reco</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </v-card-text>
+        </v-card>
+      </div>
+      <div class="col-9">
+        <v-card>
+          <v-card-text>
+            <div class="text-h5">Portfolio Overview</div>
+            <div class="d-flex">
+              <div class="text-orange border-bottom d-inline">Stocks</div>
+              <div class="mx-5">Sectors</div>
+              <div>Stocks Covered <sup class="text-orange">34</sup></div>
+            </div>
+          </v-card-text>
+        </v-card>
+      </div>
+    </div>
+    <div class="my-4">
+      <div class="row">
+        <div class="col-4">
+          <v-card>
+            <v-card-text>
+              <div class="text-h5">About</div>
+              <div class="mt-3">
+                <p>
+                  I am a SEBI Registered Research Analyst with over 12 Years of
+                  Experience in Financial Markets
+                </p>
+              </div>
+
+              <div class="my-4">
+                <span class="text-primary">Company : </span>
+                <span class="font-weight-bold">Chart & Trade</span>
+              </div>
+              <div class="my-4">
+                <span class="text-primary"> SEBI Registered Number: </span>
+                <span class="font-weight-bold">INH12345678</span>
+              </div>
+              <div class="d-flex">
+                <v-icon
+                  v-for="(social, i) in socialLinks"
+                  :key="i"
+                  class="mr-1"
+                  :color="social.color"
+                >
+                  {{ social.icon }}</v-icon
+                >
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+        <div class="col-8">
+          <v-card>
+            <v-card-text>
+              <div class="text-h5">Expert Vs Sensex</div>
+            </v-card-text>
+          </v-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-4">
+      <v-card class="pa-5">
+        <v-card-text class="my-5">
+          <div class="container">
+            <div class="border rounded-lg py-4">
+              <div class="row">
+                <div class="col-3 d-flex flex-column align-center">
+                  <div>If you would have invested</div>
+                  <div class="text-h3">1L</div>
+                  <div>
+                    in <span class="text-primary">Profit Tiger</span> in
+                  </div>
+                </div>
+                <div class="col-6 d-flex align-center">
+                  <v-divider></v-divider>
+                  <v-icon>mdi-chevron-right</v-icon>
+                </div>
+                <div class="col-3 d-flex flex-column align-center">
+                  <div>Your current value would be</div>
+                  <div class="text-h3">3.12 Cr</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
   </div>
 </template>
+
 <script>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { getDashboardData } from "../../api/user";
 export default {
   setup() {
@@ -12,6 +146,26 @@ export default {
       const res = await getDashboardData();
       console.log("res: ", res);
     });
+
+    const socialLinks = ref([
+      {
+        icon: "mdi-linkedin",
+        color: "indigo",
+      },
+      {
+        icon: "mdi-twitter",
+        color: "blue",
+      },
+      {
+        icon: "mdi-youtube",
+        color: "red",
+      },
+      {
+        icon: "mdi-web",
+        color: "grey",
+      },
+    ]);
+    return { socialLinks };
   },
 };
 </script>

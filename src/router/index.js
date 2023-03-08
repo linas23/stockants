@@ -24,7 +24,7 @@ const routes = [
       },
       {
         path: "user-portfolio",
-        name: "userportfoliopage",
+        name: "UserPortfolioPage",
         component: UserPortfolioPage,
         meta: { title: "User Portfolio" },
       },
