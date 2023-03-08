@@ -67,7 +67,7 @@
 import { reactive, ref } from "vue";
 import { email, helpers, required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-
+import { useStore } from "vuex";
 const isLoading = ref(false);
 const isPasswordHidden = ref(true);
 const form = reactive({
@@ -81,8 +81,8 @@ const rules = {
 };
 
 const v$ = useVuelidate(rules, form);
-
+const store = useStore();
 const handleSubmit = function () {
-  console.log("submitting");
+  store.dispatch("auth/login", form);
 };
 </script>
