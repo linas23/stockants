@@ -71,8 +71,9 @@ import { useStore } from "vuex";
 const isLoading = ref(false);
 const isPasswordHidden = ref(true);
 const form = reactive({
-  email: "",
-  password: "",
+  email: "fegde.mayur@gmail.com",
+  password: "Tech@1234",
+  sign_in_with: "EMAIL",
 });
 
 const rules = {

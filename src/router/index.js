@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import DefaultLayout from "../layout/default.vue";
 import LoginPage from "../pages/auth/login.vue";
+import UsersPage from "../pages/users/index.vue";
+import UserPortfolioPage from "../pages/users/portfolio.vue";
 const routes = [
   {
     path: "/",
@@ -13,6 +15,18 @@ const routes = [
         name: "LoginPage",
         component: LoginPage,
         meta: { title: "Login" },
+      },
+      {
+        path: "users",
+        name: "userspage",
+        component: UsersPage,
+        meta: { title: "Users" },
+      },
+      {
+        path: "user-portfolio",
+        name: "userportfoliopage",
+        component: UserPortfolioPage,
+        meta: { title: "User Portfolio" },
       },
     ],
   },
