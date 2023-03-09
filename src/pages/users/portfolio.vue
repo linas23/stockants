@@ -163,13 +163,24 @@
           <v-card>
             <v-card-text>
               <div class="d-flex justify-space-between align-center">
-                <div class="text-h6 font-weight-bold">
+                <div class="text-body font-weight-bold">
                   Recommendations (Equity)
                 </div>
-                <div class="d-flex">
-                  <div>1M / 3M/ 6M</div>
-                  <div>
-                    <v-icon>mdi-edit</v-icon>
+                <div class="d-flex align-center">
+                  <div class="d-flex">
+                    <div
+                      v-for="(item, i) in ['1M', '3M', '6M', '1Y']"
+                      :key="i"
+                      :class="[
+                        'mr-2 px-2 py-1 rounded-lg border',
+                        { 'bg-indigo': i === 2 },
+                      ]"
+                    >
+                      {{ item }}
+                    </div>
+                  </div>
+                  <div class="ml-4 text-blue">
+                    <v-icon size="small"> mdi-pencil-remove </v-icon>
                     Edit
                   </div>
                 </div>
@@ -193,13 +204,24 @@
           <v-card>
             <v-card-text>
               <div class="d-flex justify-space-between align-center">
-                <div class="text-h6 font-weight-bold">
+                <div class="text-body font-weight-bold">
                   Recommendations (Options)
                 </div>
-                <div class="d-flex">
-                  <div>1M / 3M/ 6M</div>
-                  <div>
-                    <v-icon>mdi-edit</v-icon>
+                <div class="d-flex align-center">
+                  <div class="d-flex">
+                    <div
+                      v-for="(item, i) in ['1M', '3M', '6M', '1Y']"
+                      :key="i"
+                      :class="[
+                        'mr-2 px-2 py-1 rounded-lg border',
+                        { 'bg-indigo': i === 1 },
+                      ]"
+                    >
+                      {{ item }}
+                    </div>
+                  </div>
+                  <div class="ml-4 text-blue">
+                    <v-icon size="small"> mdi-pencil-remove </v-icon>
                     Edit
                   </div>
                 </div>

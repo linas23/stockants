@@ -3,11 +3,13 @@
     <v-card-text>
       <div class="py-2 border-bottom d-flex justify-space-between">
         <div>
-          <div class="pa-1 bg-green-lighten-4 text-green font-weight-bold">
+          <div
+            class="pa-1 bg-green-lighten-4 text-green font-weight-bold rounded-lg"
+          >
             LIVE
           </div>
         </div>
-        <div class="pa-1 bg-primary rou<span> 17415.2 </span>nded-lg">
+        <div class="pa-1 bg-primary rounded-lg">
           <v-icon> mdi-arrow-expand-horizontal </v-icon>
           <span>TRADE</span>
         </div>
@@ -19,14 +21,28 @@
         </div>
         <div class="bg-grey-lighten-3 pa-1">Short Term</div>
       </div>
-      <div class="my-2 d-flex justify-space-between align-center">
+      <div class="my-3 d-flex justify-space-between align-center">
         <div>
-          <div class="text-subtitle-1">Eicher Motors Ltd.</div>
+          <div class="text-h6">Eicher Motors Ltd.</div>
+          <div class="d-flex">
+            <div class="border rounded-lg mr-2 px-1 text-indigo-darken-3">
+              more
+            </div>
+            <div class="border rounded-lg mr-2 px-1 text-indigo-darken-3">
+              login
+            </div>
+            <div class="border rounded-lg px-1 text-red">
+              <v-icon>mdi-file-pdf-box</v-icon>
+            </div>
+          </div>
         </div>
-        <div>
+        <div class="text-right">
           <div class="text-subtitle-1">
             <v-icon size="small"> mdi-currency-rupee </v-icon>
             <span> 18671 </span>
+          </div>
+          <div class="text-caption text-grey">
+            {{ dayjs() }}
           </div>
         </div>
       </div>
@@ -56,6 +72,9 @@
                 </div>
               </v-card>
             </div>
+            <div class="text-caption mt-1 text-grey">
+              {{ dayjs() }}
+            </div>
           </div>
           <div class="col-2 d-flex flex-column align-center">
             <div class="bg-success px-2 rounded-xl">BUY</div>
@@ -71,3 +90,13 @@
     </v-card-text>
   </v-card>
 </template>
+<script>
+import dayjs from "dayjs";
+export default {
+  setup() {
+    return {
+      dayjs,
+    };
+  },
+};
+</script>
